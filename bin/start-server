@@ -1,9 +1,13 @@
 #/usr/bin/env bash
 
+if [ $# -ne 1 ]; then
+	echo usage: $0 [zonedata.json]
+	exit 1
+fi
 if [ ! -f src/server.js ]; then
 	echo start from app root not bin folder
 	exit 1
 fi
 
-/usr/bin/env node src/server.js
+/usr/bin/env node src/server.js $1
 

@@ -40,8 +40,13 @@ function initExpress(httpPort, domainData) {
 }
 
 function init() {
-	console.log(config);
-	var data = initData(config.dataFile);
+	if (process.argv.length != 3) {
+		console.error('usage: node server.js [zonedata.json]');
+		process.exit(1);
+	}
+	console.log('config', config);
+	console.log('argv', process.argv);
+	var data = initData(process.argv[2]);
 	initExpress(config.httpPort, data);
 }
 
