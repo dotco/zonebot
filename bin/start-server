@@ -5,5 +5,5 @@ if [ ! -f src/server.js ]; then
 	exit 1
 fi
 
-/usr/bin/env node-dev src/server.js
+/usr/bin/env node src/server.js
 
