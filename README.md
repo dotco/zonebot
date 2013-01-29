@@ -7,7 +7,8 @@ Install
 -------
 
 ```shell
-$ git clone http://whatever
+$ git clone https://github.com/dotco/zonebot.git
+$ cd zonebot
 $ npm install
 $ mkdir data
 $ scp user@host:my-zone-file data/axfr.txt
