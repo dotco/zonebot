@@ -1,0 +1,9 @@
+#/usr/bin/env bash
+
+if [ ! -f src/server.js ]; then
+	echo start from app root not bin folder
+	exit 1
+fi
+
+/usr/bin/env node-dev src/server.js
+

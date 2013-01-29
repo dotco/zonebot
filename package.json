@@ -1,0 +1,17 @@
+{
+	"name": "zonebot",
+  "description": "REST service to determine if a domain is registered, based on zone file",
+  "version": "0.0.1",
+  "engines": {
+    "node": "0.8.x",
+    "npm":  "1.1.x"
+  },
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "express": "*",
+    "line-reader": "*",
+		"cluster2" :"*"
+  }
+}
