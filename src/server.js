@@ -5,8 +5,10 @@ var config = require('../config'),
 		url = require('url'),
 		taken = JSON.stringify({ status: 'taken' }),
 		avail = JSON.stringify({ status: 'avail' }),
-		hitStats = {}, 
+		globalStats = {}, 
 		nHits = 0,
+		updateInterval = 1, // after n hits, send status
+		showStatsInterval = 60 * 1000,
 		domainData;
 
 function checkName(data) {
@@ -16,7 +18,7 @@ function checkName(data) {
 		
 		res.writeHead(200, {'Content-Type': 'application/json'});
 		var name = path.toLowerCase();
-		if (name.substr(-3) === '.CO')
+		if (name.substr(-3) === '.co')
 			name = name.substr(0, -3);
 		// console.log(name);
 		if (name in data)
@@ -25,8 +27,10 @@ function checkName(data) {
 			res.write(avail);
 		res.end();
 		nHits++;
-		if (nHits % 100 == 0)
-			console.log('nHits for #'+ cluster.worker.id, nHits);
+		if (nHits % updateInterval == 0) {
+			// console.log('nHits for #'+ cluster.worker.id, nHits);
+			process.send({ workerId: cluster.worker.id, hits: nHits });
+		}
 	}
 }
 
@@ -43,7 +47,7 @@ function initExpress(httpPort, data) {
 	});
 	*/
 	http.createServer(checkName(data)).listen(port);
-	console.log('worker '+cluster.worker.id+' listening');
+	console.log('worker '+cluster.worker.id+' listening on '+port);
 }
 
 function init() {
@@ -58,16 +62,31 @@ function init() {
 		console.log('config', config);
 		console.log('argv', process.argv);
 		for (var i = 0; i < nCpus; i++) {
-			cluster.fork();
+			var worker = cluster.fork();
+			worker.on('message', updateStats);
 		}
+
 		cluster.on('exit', function(worker, code, signal) {
 			console.log('worker '+worker.process.pid+' died');
+			globalStats[worker.id] = 'dead';
 		});
+
+		setInterval(showStats, showStatsInterval);
+
 	} else {
 		domainData = initData(process.argv[2]);
 		initExpress(config.httpPort, domainData);
 	}
+}
 
+function showStats() {
+	console.log('showStats', globalStats);
+}
+
+function updateStats(msg) {
+	// console.log('updateStats', msg);
+	if (msg.workerId && msg.hits)
+		globalStats[msg.workerId] = msg.hits;
 }
 
 init();
