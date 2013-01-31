@@ -14,6 +14,7 @@ var config = require('../config'),
 function checkName(data) {
 
 	return function(req, res) { 
+		// console.log(req.url);
 		var path = url.parse(req.url).pathname.substr(1);
 		
 		res.writeHead(200, {'Content-Type': 'application/json'});
