@@ -2,13 +2,14 @@ var config = require('../config'),
 		cluster = require('cluster'),
 		fs = require('fs'),
 		http = require('http'),
+		os = require('os'),
 		url = require('url'),
 		taken = JSON.stringify(config.response.taken),
 		avail = JSON.stringify(config.response.available),
 		globalStats = {}, 
 		nHits = 0,
-		updateInterval = 1, // after n hits, send status
-		showStatsInterval = 60 * 1000,
+		updateInterval = 5, // after n hits, send status
+		showStatsInterval = config.statsUpdateSecs * 1000,
 		domainData;
 
 function checkName(data) {
@@ -52,7 +53,7 @@ function initExpress(httpPort, data) {
 }
 
 function init() {
-	var nCpus = require('os').cpus().length;
+	var nCpus = os.cpus().length;
 
 	if (process.argv.length != 3) {
 		console.error('usage: node server.js [zonedata.json]');
@@ -73,20 +74,27 @@ function init() {
 		});
 
 		setInterval(showStats, showStatsInterval);
-
 	} else {
 		domainData = initData(process.argv[2]);
+		process.send({ workerId: cluster.worker.id, hits: 0 });
 		initExpress(config.httpPort, domainData);
 	}
 }
 
 function showStats() {
-	console.log('showStats', globalStats);
+	var workers = Object.keys(globalStats),
+			nCpus = os.cpus().length, 
+			parts = [];
+
+	for (var i = 0; i < nCpus; i++) {
+		parts.push('#'+i+': '+globalStats[workers[i]]);
+	}
+	console.log(parts.join(', '));
 }
 
 function updateStats(msg) {
 	// console.log('updateStats', msg);
-	if (msg.workerId && msg.hits)
+	if (msg.workerId)
 		globalStats[msg.workerId] = msg.hits;
 }
 
