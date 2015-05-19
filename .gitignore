@@ -2,3 +2,7 @@
 *swp
 *swo
 *bak
+log.txt
+data/
+nohup.out
+node_modules/

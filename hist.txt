@@ -1,0 +1,271 @@
+    1  ls
+    2  apt-get install node 
+    3  apt-get install nodejs
+    4  apt-get update
+    5  apt-get upgrade
+    6  ls
+    7  node
+    8  node -v
+    9  apt-get install node
+   10  apt-get install nodejs
+   11  ls
+   12  vim /etc/hostname
+   13  apt-get install vim
+   14  ls
+   15  vim /etc/hostname
+   16  :q
+   17  ls
+   18  ls -a
+   19  ls
+   20  la
+   21  mkdir .ssh
+   22  tee > .ssh/authorized_keys
+   23  ls
+   24  node
+   25  cd /tmp
+   26  fetch http://whois.api.go.co/test
+   27  wget http://whois.api.go.co/test
+   28  time wget http://whois.api.go.co/test
+   29  pwd
+   30  cd /home
+   31  ls
+   32  cd 
+   33  ls
+   34  cd zonebot/
+   35  ls
+   36  vim src/server.js
+   37  git diff
+   38  git push
+   39  git commit
+   40  git commit src/server.js
+   41  git push
+   42  time wget http://whois.api.go.co/test
+   43  cd /tmp
+   44  time wget http://whois.api.go.co/test
+   45  tee >> .ssh/authorized_keys 
+   46  vim /etc/hostname
+   47  ls
+   48  mkdie zonebot
+   49  mkdir zonebot
+   50  cd zonebot/
+   51  ls
+   52  git clone https://github.com/dotco/zonebot.git
+   53  apt-get install git
+   54  git clone https://github.com/dotco/zonebot.git
+   55  rm -rf .
+   56  cd ..
+   57  rm -rf zonebot/
+   58  git clone https://github.com/dotco/zonebot.git
+   59  vim zonebot/README.md 
+   60  cd zonebot/
+   61  ls
+   62  npm install
+   63  apt-get install npm
+   64  node
+   65  node -v
+   66  ls
+   67  ls ..
+   68  mkdir adata
+   69  rmdir adata
+   70  mkdir data
+   71  mv ../axfr.txt data/
+   72  ls data
+   73  ls
+   74  bin/axfr-txt-to-json data/axfr.txt data/axfr.json
+   75  npm install
+   76  ls
+   77  ls -l data/
+   78  time bin/axfr-txt-to-json data/axfr.txt data/axfr.json
+   79  ls
+   80  bin/start-server 
+   81  vim bin/start-server 
+   82  git commit bin/start-server 
+   83  git config --global user.name "Thomas Lackner"
+   84  git config --global user.email tom@go.co
+   85  git commit bin/start-server 
+   86  git push
+   87  git diff README.md 
+   88  git commit README.md 
+   89  export EDITOR=vim
+   90  vim /root/.bash
+   91  vim /root/.bashrc
+   92  ls
+   93  ls data/
+   94  vim bin/start-server 
+   95  wget http://modernmethod.com/tlack/vimrc/vimrc
+   96  mv vimrc ~/.vimrc
+   97  sh bin/start-server 
+   98  sh bin/start-server data/axfr.json
+   99  fg
+  100  vim bin/start-server 
+  101  sh bin/start-server data/axfr.json
+  102  fg
+  103  sh bin/start-server data/axfr.json
+  104  ls
+  105  ls data/
+  106  vim src/server.js 
+  107  sh bin/start-server data/axfr.json
+  108  fg
+  109  sh bin/start-server data/axfr.json
+  110  fg
+  111  vim src/server.js
+  112  sh bin/start-server data/axfr.json
+  113  fg
+  114  ls
+  115  ls data
+  116  more data/axfr.
+  117  more data/axfr.json
+  118  ls
+  119  vim data/axfr.json
+  120  sudo add-apt-repository ppa:chris-lea/node.js
+  121  sudo apt-get update
+  122  sudo apt-get install nodejs npm
+  123  add-apt-repository
+  124  sudo add-apt-repository ppa:chris-lea/node.js
+  125  add-apt-repository
+  126  rehash
+  127  apt-get install python-software-properties
+  128  df
+  129  sudo add-apt-repository ppa:chris-lea/node.js
+  130  sudo apt-get update
+  131  sudo apt-get install nodejs npm
+  132  node -v
+  133  ls
+  134  sh bin/start-server data/axfr.json
+  135  vim src/server.js
+  136  ls
+  137  cat config.js
+  138  sh bin/start-server data/axfr.json
+  139  bin/start-server
+  140  bin/start-server data/axfr.
+  141  bin/start-server data/axfr.json
+  142  vim bin/start-server
+  143  bin/start-server data/axfr.json
+  144  fg
+  145  bin/start-server data/axfr.json
+  146  more data/axfr.json
+  147  ls
+  148  bin/start-server data/axfr.json
+  149  dmesg | more
+  150  cpuinfo
+  151  cat /proc/cpuinfo 
+  152  ls
+  153  git iff
+  154  git diff
+  155  git commit
+  156  git commit bin/start-server src/server.js
+  157  vim ~/.vimrc
+  158  ls
+  159  git push
+  160  vim README.md 
+  161  git commitgit commit README.md
+  162  git commit README.md
+  163  git push
+  164  ls
+  165  vim src/server.js
+  166  fg
+  167  bin/start-server data/axfr.json
+  168  fg
+  169  bin/start-server data/axfr.json
+  170  fg
+  171  bin/start-server data/axfr.json
+  172  fg
+  173  bin/start-server data/axfr.json
+  174  fg
+  175  bin/start-server data/axfr.json
+  176  fg
+  177  bin/start-server data/axfr.json
+  178  fg
+  179  bin/start-server data/axfr.json
+  180  fg
+  181  vim server.js
+  182  ls
+  183  vim src/server.js
+  184  fg
+  185  uptime
+  186  fg
+  187  bin/start-server data/axfr.json
+  188  fg
+  189  bin/start-server data/axfr.json
+  190  fg
+  191  bin/start-server data/axfr.json
+  192  fg
+  193  bin/start-server data/axfr.json
+  194  fg
+  195  bin/start-server data/axfr.json
+  196  fg
+  197  bin/start-server data/axfr.json
+  198  fg
+  199  bin/start-server data/axfr.json
+  200  fg
+  201  bin/start-server data/axfr.json
+  202  fg
+  203  bin/start-server data/axfr.json
+  204  fg
+  205  bin/start-server data/axfr.json
+  206  ifconfig -a
+  207  nslookup gorilla.go.co
+  208  fg
+  209  ls
+  210  vim config.js
+  211  ls
+  212  vim src/server.js
+  213  git diff
+  214  git commit
+  215  git commit src/server.js
+  216  git push
+  217  ls
+  218  vim src/server.js
+  219  bin/start-server data/axfr.json
+  220  fg
+  221  bin/start-server data/axfr.json
+  222  fg
+  223  bin/start-server data/axfr.json
+  224  fg
+  225  bin/start-server data/axfr.json
+  226  bin/start-server data/axfr.json 2>&1 | tee -a server.log
+  227  ls
+  228  cat server.log 
+  229  fg
+  230  bin/start-server data/axfr.json 2>&1 | tee -a server.log
+  231  ls
+  232  vim src/server.js
+  233  bin/start-server data/axfr.json 2>&1 | tee -a server.log
+  234  fg
+  235  ls
+  236  vim src/server.js
+  237  bin/start-server data/axfr.json 2>&1 | tee -a server.log
+  238  vim src/server.js
+  239  fg
+  240  bin/start-server data/axfr.json 2>&1 | tee -a server.log
+  241  fg
+  242  bin/start-server data/axfr.json 2>&1 | tee -a server.log
+  243  fg
+  244  bin/start-server data/axfr.json 2>&1 | tee -a server.log
+  245  ls
+  246  ls ..
+  247  ls -l ../domains-only.txt 
+  248  wc -l ../domains-only.txt 
+  249  ls data/
+  250  more data/axfr.
+  251  more data/axfr.txt
+  252  ls
+  253  vim bin/axfr-txt-to-json 
+  254  ls
+  255  ls data/
+  256  cp ../domains-only.txt data/
+  257  bin/axfr-txt-to-json data/domains-only.txt data/domains-only.json
+  258  bin/start-server data/domains-only.json
+  259  vim src/server.js
+  260  bin/start-server data/domains-only.json
+  261  bin/start-server data/domains-only.json 2>&1 | tee -a log.txt
+  262  ls
+  263  cd zonebot/
+  264  ls
+  265  ls
+  266  cd zonebot/
+  267  bin/start-server data/domains-only.json 2>&1 | tee -a log.txt
+  268  ls
+  269  cd zonebot/
+  270  ls
+  271  history > hist.txt

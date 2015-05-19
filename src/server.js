@@ -10,23 +10,60 @@ var config = require('../config'),
 		nHits = 0,
 		updateInterval = 5, // after n hits, send status
 		showStatsInterval = config.statsUpdateSecs * 1000,
-		domainData;
+		domainData,
+		lastTotal = 0;
 
 function checkName(data) {
 
 	return function(req, res) { 
-		// console.log(req.url);
-		var path = url.parse(req.url).pathname.substr(1);
-		
+		console.log(req.url)
+		var parsed = url.parse(req.url, true),
+				query = parsed.query;
+
+		console.log(req.url, req.headers);
+
 		res.writeHead(200, {'Content-Type': 'application/json'});
-		var name = path.toLowerCase();
+
+		if (req.url == '/mu-8313f9bf-9c03f615-cce7738e-86c841dd') {
+			res.write('42');
+			res.end();
+			return;
+		}
+
+		var name = query.domain;
+		if (!name) { 
+			res.write('no ?domain=');
+			res.end();
+			return;
+		}
+		name = name.toLowerCase();
 		if (name.substr(-3) === '.co')
-			name = name.substr(0, -3);
-		// console.log(name);
+			name = name.slice(0, -3);
+
+		if (req.url.indexOf('/exclude') === 0) {
+			data[name] = 1;
+			res.write('excluded');
+			res.end();
+			return;
+		}
+
+		console.log(req.url, req.headers);
+		
+		// jsonp
+		if (query.callback) 
+			res.write(query.callback+'(');
+
+		console.log('checking',name);
+
 		if (name in data)
 			res.write(taken);
 		else
 			res.write(avail);
+
+		// jsonp
+		if (query.callback)
+			res.write(')');
+
 		res.end();
 		nHits++;
 		if (nHits % updateInterval == 0) {
@@ -53,7 +90,7 @@ function initExpress(httpPort, data) {
 }
 
 function init() {
-	var nCpus = os.cpus().length;
+	var nCpus = 1; // os.cpus().length;
 
 	if (process.argv.length != 3) {
 		console.error('usage: node server.js [zonedata.json]');
@@ -76,6 +113,7 @@ function init() {
 		setInterval(showStats, showStatsInterval);
 	} else {
 		domainData = initData(process.argv[2]);
+		console.log('read', Object.keys(domainData).length, 'records from', process.argv[2]);
 		process.send({ workerId: cluster.worker.id, hits: 0 });
 		initExpress(config.httpPort, domainData);
 	}
@@ -84,12 +122,18 @@ function init() {
 function showStats() {
 	var workers = Object.keys(globalStats),
 			nCpus = os.cpus().length, 
-			parts = [];
+			parts = [],
+			total = 0,
+			perSec = 0;
 
 	for (var i = 0; i < nCpus; i++) {
 		parts.push('#'+i+': '+globalStats[workers[i]]);
+		total += globalStats[workers[i]];
 	}
 	console.log(parts.join(', '));
+	perSec = (total - lastTotal) / config.statsUpdateSecs;
+	console.log("total = ", total, " per sec = ", perSec);
+	lastTotal = total;
 }
 
 function updateStats(msg) {
